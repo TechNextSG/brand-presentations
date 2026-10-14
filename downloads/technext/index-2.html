@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>TechNext Branding Miscellaneous</title>
+<meta name="description" content="TechNext staff kit: email signature generator for Gmail and Odoo, branded profile photo generator, animated logo GIF, video-call backgrounds, business cards and staff ID cards.">
+<link rel="icon" type="image/png" href="business-cards/plane-blue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Tokens follow technext.asia site.css, same as the Marketing Hub (hub.css). */
+:root{
+  --blue:#3167CA; --blue-700:#1E4691; --blue-300:#6FA0F5; --blue-100:#DDE7F8; --blue-050:#EAF0FB;
+  --ink:#1F1F3D; --ink-2:#4C4C63; --ink-3:#7A7A90; --line:#E3E7F0; --bg:#F6F8FC; --card:#FFFFFF;
+  --ok:#137A4A; --ok-050:#E3F3EA; --no:#B42318; --no-050:#FDE8E8; --warn:#B45309; --warn-050:#FEF3DC;
+  --wa:#25D366; --wa-700:#1DA851;
+  --font-display:"Plus Jakarta Sans",Inter,system-ui,sans-serif;
+  --font-body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:16px; --r-sm:10px;
+  --shadow-sm:0 1px 2px rgba(31,31,61,.06),0 8px 24px -18px rgba(31,31,61,.25);
+  --shadow-md:0 2px 6px rgba(31,31,61,.06),0 24px 48px -28px rgba(31,31,61,.35);
+  --shadow-blue:0 12px 28px -12px rgba(49,103,202,.55);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--font-body);
+  background-image:radial-gradient(circle at 1px 1px,rgba(49,103,202,.10) 1px,transparent 0);background-size:26px 26px}
+a{color:var(--blue)}
+h1,h2,h3{font-family:var(--font-display);letter-spacing:-.015em;line-height:1.15;margin:0}
+button{font:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(16px,4vw,32px)}
+.ic{width:16px;height:16px;flex:none}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(246,248,252,.86);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand img{height:26px;width:auto;display:block}
+.brand b{font-family:var(--font-display);font-weight:700;font-size:15px;color:var(--ink-2);padding-left:12px;border-left:1px solid var(--line);white-space:nowrap}
+.nav{margin-left:auto;display:flex;gap:4px;align-items:center}
+.nav a{text-decoration:none;color:var(--ink-2);font-weight:600;font-size:14px;padding:8px 12px;border-radius:999px;transition:background .2s var(--ease),color .2s var(--ease)}
+.nav a:hover{background:var(--blue-050);color:var(--blue-700)}
+.nav a.cta{background:var(--blue);color:#fff}
+.nav a.cta:hover{background:var(--blue-700)}
+
+/* hero */
+.hero{padding:clamp(40px,7vw,76px) 0 clamp(18px,3vw,28px)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--blue-700);background:#fff;border:1px solid var(--blue-100);border-radius:999px;padding:6px 12px;box-shadow:var(--shadow-sm)}
+.kicker i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(19,122,74,.15)}
+.hero h1{font-size:clamp(34px,5.4vw,58px);font-weight:800;letter-spacing:-.025em;margin:18px 0 14px;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--blue);background:linear-gradient(transparent 62%,var(--blue-100) 62%)}
+.hero p{font-size:clamp(16px,1.5vw,19px);color:var(--ink-2);max-width:62ch;margin:0}
+.jump{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,200px),1fr));gap:12px;margin-top:28px}
+.jump a{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;box-shadow:var(--shadow-sm);transition:all .25s var(--ease)}
+.jump a:hover{border-color:var(--blue-100);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.jump .n{font-family:var(--font-display);font-weight:800;color:#fff;background:var(--blue);border-radius:9px;width:30px;height:30px;display:grid;place-items:center;font-size:14px;flex:none}
+.jump b{display:block;font-size:14px;font-weight:600;line-height:1.3}
+.jump small{display:block;font-size:12.5px;color:var(--ink-3);line-height:1.35}
+
+/* sub-nav */
+.subnav{position:sticky;top:64px;z-index:40;background:rgba(246,248,252,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:6px;overflow-x:auto;padding-top:8px;padding-bottom:8px;scrollbar-width:none}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{flex:none;text-decoration:none;font-size:13px;font-weight:600;color:var(--ink-2);padding:7px 12px;border-radius:999px;border:1px solid transparent;transition:all .2s var(--ease)}
+.subnav a:hover{background:#fff;border-color:var(--line)}
+.subnav a.on{background:var(--blue);color:#fff}
+
+/* sections */
+section{padding:clamp(22px,3vw,36px) 0;scroll-margin-top:112px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;flex-wrap:wrap}
+.sec-head .n{font-family:var(--font-display);font-weight:800;color:#fff;background:var(--blue);border-radius:10px;width:34px;height:34px;display:inline-grid;place-items:center;font-size:15px;box-shadow:var(--shadow-blue);align-self:center}
+.sec-head h2{font-size:clamp(20px,2.4vw,26px);font-weight:700}
+.sec-head p{margin:0;color:var(--ink-3);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm);overflow:hidden}
+.card-in{padding:clamp(16px,2.4vw,24px)}
+.bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px clamp(16px,2.4vw,24px);border-bottom:1px solid var(--line)}
+.bar .t{margin-right:auto}
+.bar .t b{display:block;font-size:15px;font-weight:600}
+.bar .t>span{display:block;font-size:13px;color:var(--ink-3)}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 8px;background:var(--blue-050);color:var(--blue-700);margin-left:6px;vertical-align:2px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-weight:600;font-size:13.5px;border-radius:10px;padding:9px 13px;border:1px solid var(--line);background:#fff;color:var(--ink);transition:all .2s var(--ease);cursor:pointer;line-height:1;white-space:nowrap}
+.btn:hover{border-color:var(--blue-300);color:var(--blue-700);background:var(--blue-050)}
+.btn.p{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:var(--shadow-blue)}
+.btn.p:hover{background:var(--blue-700);border-color:var(--blue-700);color:#fff}
+.btn.copied,.btn.copied:hover{background:var(--ok);border-color:var(--ok);color:#fff;box-shadow:none}
+.btn.sm{padding:7px 10px;font-size:12.5px}
+.btn svg{width:14px;height:14px}
+.btn:focus-visible,.subnav a:focus-visible,.jump a:focus-visible,summary:focus-visible{outline:3px solid var(--blue-300);outline-offset:2px}
+
+/* signature generator */
+.sig{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr)}
+.form{padding:clamp(16px,2.4vw,24px);background:var(--bg);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;font-weight:600;color:var(--ink-2)}
+.field input{font:inherit;font-size:15px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px;transition:border-color .2s var(--ease),box-shadow .2s var(--ease)}
+.field input::placeholder{color:#A9A9BA}
+.field input:focus{outline:0;border-color:var(--blue-300);box-shadow:0 0 0 4px var(--blue-050)}
+.form .hint{font-size:12.5px;color:var(--ink-3);line-height:1.5;margin:0}
+.preview{padding:clamp(16px,2.4vw,28px);min-width:0}
+.preview .lbl{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.preview .lbl::after{content:"";flex:1;height:1px;background:var(--line)}
+.paper{overflow-x:auto;padding:4px 2px 8px}
+
+/* tutorials */
+.tut{border-top:1px solid var(--line);background:#FBFCFE}
+.tut summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px clamp(16px,2.4vw,24px);font-size:14px;font-weight:600;color:var(--blue-700)}
+.tut summary::-webkit-details-marker{display:none}
+.tut summary .chev{width:16px;height:16px;transition:transform .25s var(--ease)}
+.tut[open] summary .chev{transform:rotate(90deg)}
+.tut summary small{font-weight:400;color:var(--ink-3);font-size:13px}
+.tut-body{padding:0 clamp(16px,2.4vw,24px) 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px}
+.tut-col h3{font-size:14px;font-weight:700;margin:4px 0 10px;color:var(--ink)}
+.steps{list-style:none;counter-reset:s;margin:0 0 12px;padding:0}
+.steps li{position:relative;padding:0 0 10px 36px;font-size:14px;color:var(--ink-2);line-height:1.55}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--blue-050);color:var(--blue-700);font:800 12px/24px var(--font-display);text-align:center}
+.steps b{color:var(--ink);font-weight:600}
+kbd{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink-2);background:#fff;border:1px solid var(--line);border-bottom-width:2px;border-radius:6px;padding:2px 6px;white-space:nowrap}
+.note{display:flex;gap:10px;align-items:flex-start;border-left:3px solid var(--blue);background:var(--blue-050);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:11px 14px;font-size:13.5px;line-height:1.5;color:var(--ink-2)}
+.note svg{width:16px;height:16px;color:var(--blue);flex:none;margin-top:2px}
+.note.warn{border-color:var(--warn);background:var(--warn-050)}
+.note.warn svg{color:var(--warn)}
+.note b{color:var(--ink);font-weight:600}
+.tut-col .note{margin-bottom:12px}
+
+/* profile photo generator */
+.pp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,36px);align-items:start}
+.pp-stage{display:flex;flex-direction:column;align-items:center;gap:12px}
+#pp-canvas{width:100%;max-width:440px;height:auto;aspect-ratio:1;display:block;border-radius:50%;background:#fff;box-shadow:var(--shadow-md);cursor:pointer;touch-action:none}
+.pp.has #pp-canvas{cursor:grab}
+#pp-canvas.grab{cursor:grabbing}
+#pp-canvas:focus-visible{outline:3px solid var(--blue-300);outline-offset:4px}
+.pp-tools{display:flex;align-items:center;gap:12px;width:100%;max-width:440px}
+.pp-tools[hidden]{display:none}
+.pp-zoom{flex:1;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--ink-2)}
+.pp-zoom input{flex:1;accent-color:var(--blue)}
+.pp-hint{margin:0;font-size:12.5px;color:var(--ink-3);text-align:center}
+.pp-side{display:flex;flex-direction:column;gap:14px;min-width:0}
+.pp-drop{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;padding:22px 16px;border:2px dashed var(--blue-100);border-radius:var(--r);background:var(--blue-050);cursor:pointer;transition:border-color .2s var(--ease),background .2s var(--ease)}
+.pp-drop:hover,.pp-drop.over{border-color:var(--blue);background:#E2EBFB}
+.pp-drop:focus-within{outline:3px solid var(--blue-300);outline-offset:2px}
+.pp-drop svg{width:28px;height:28px;color:var(--blue);margin-bottom:4px}
+.pp-drop b{font-family:var(--font-display);font-size:16px;color:var(--ink)}
+.pp-drop span{font-size:13px;color:var(--ink-3)}
+.pp-status{margin:-4px 0 0;font-size:13px;color:var(--ink-3);line-height:1.5}
+.pp-status.ok{color:var(--ok)}
+.pp-status.err{color:var(--no)}
+.pp-opts{display:grid;gap:10px;padding:14px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--bg)}
+.pp-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pp-k{font-size:12px;font-weight:600;color:var(--ink-2);min-width:84px}
+.chip{display:inline-flex;align-items:center;gap:7px;font:600 13px/1 var(--font-body);color:var(--ink-2);background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer;transition:all .2s var(--ease)}
+.chip i{width:14px;height:14px;border-radius:50%;display:block}
+.chip:hover{border-color:var(--blue-300)}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.chip:focus-visible{outline:3px solid var(--blue-300);outline-offset:2px}
+.pp-check{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);cursor:pointer}
+.pp-check input{accent-color:var(--blue);width:16px;height:16px}
+.pp-namef{display:flex;flex-direction:column;gap:6px}
+.pp-dl{display:flex;gap:8px;flex-wrap:wrap}
+.pp-tips{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.pp-tips li{position:relative;padding-left:26px;font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.pp-tips li::before{position:absolute;left:0;top:1px;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:10px}
+.pp-tips li.yes::before{content:"\2713";background:var(--ok-050);color:var(--ok)}
+.pp-tips li.no::before{content:"\2715";background:var(--no-050);color:var(--no)}
+.pp-wa{margin:0;font-size:13px;color:var(--ink-3);line-height:1.5}
+/* profile photo */
+.profile{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start}
+.lead{font-size:15px;color:var(--ink-2);margin:0 0 16px}
+.faces{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.faces img{width:100%;height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover;display:block;background:var(--blue-050);box-shadow:var(--shadow-sm)}
+.dos{display:grid;gap:8px}
+.do{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-sm);background:#fff;font-size:14px;color:var(--ink-2);line-height:1.45}
+.do i{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px}
+.do.yes i{background:var(--ok-050);color:var(--ok)}
+.do.no i{background:var(--no-050);color:var(--no)}
+.do b{color:var(--ink);font-weight:600}
+.wa{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:16px;padding:14px 16px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--bg)}
+.wa p{margin:0;font-size:14px;color:var(--ink-2);line-height:1.5}
+.wa p b{color:var(--ink)}
+.btn.wa-btn{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn.wa-btn:hover{background:var(--wa-700);border-color:var(--wa-700);color:#fff}
+.btn.wa-btn svg{width:16px;height:16px;fill:#fff}
+
+/* animated logo */
+.gif{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:center}
+.gif img{width:180px;height:180px;border-radius:var(--r);border:1px solid var(--line);background:#fff;display:block}
+.gif-pair{display:flex;gap:14px}
+.gif-pair figure{margin:0;display:grid;gap:8px;justify-items:center}
+.gif-pair img{border-radius:50%;box-shadow:var(--shadow-sm)}
+.gif-pair figcaption{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.gif-lead{margin-top:8px}
+.gif-dl{display:flex;flex-wrap:wrap;gap:8px}
+.gif-small{margin:12px 0 0;font-size:13px;color:var(--ink-2)}
+.gif-small a{color:var(--blue);font-weight:600}
+.specs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 18px}
+.specs span{font-size:12.5px;font-weight:600;color:var(--ink-2);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+
+/* backgrounds */
+.bgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:16px}
+.bg{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:#fff;transition:all .25s var(--ease)}
+.bg:hover{border-color:var(--blue-100);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.bg img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:var(--blue-050)}
+.bg .foot{display:flex;align-items:center;gap:8px;padding:10px 12px;flex-wrap:wrap}
+.bg .foot b{font-size:14px;font-weight:600;margin-right:auto}
+
+/* business cards */
+.bc{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(16px,3vw,32px);align-items:center}
+.bc h3{font-size:20px;font-weight:700;margin-bottom:8px}
+.bc p{margin:0 0 16px;color:var(--ink-2);font-size:15px;max-width:58ch}
+.bc .acts{display:flex;gap:8px;flex-wrap:wrap}
+.mini{position:relative;width:300px;height:166px}
+.mini div{position:absolute;width:220px;height:126px;border-radius:12px;box-shadow:var(--shadow-md)}
+.mini .back{right:48px;top:0;background:var(--blue);display:grid;place-items:center}
+.mini .back img{width:44px;height:auto}
+.mini .front{left:0;bottom:16px;background:#fff;border:1px solid var(--line);padding:16px}
+.mini .front img{width:96px;height:auto;display:block;margin-bottom:22px}
+.mini .front i{display:block;height:7px;border-radius:4px;background:var(--blue-100);margin-bottom:6px}
+.mini .front i:first-of-type{width:60%;background:var(--ink)}
+.mini .front i:last-of-type{width:45%}
+.mini .id{right:0;bottom:0;width:84px;height:134px;background:#fff;border:1px solid var(--line);overflow:hidden;border-radius:8px}
+.mini .id .hd{position:absolute;left:0;right:0;top:0;height:46px;background:var(--blue);border-radius:0 0 50% 50% / 0 0 10px 10px;display:flex;justify-content:center;padding-top:8px}
+.mini .id .hd img{width:46px;height:auto;display:block;align-self:flex-start}
+.mini .id .ph{position:absolute;left:20px;top:24px;width:44px;height:52px;border-radius:6px;background:linear-gradient(160deg,#4379DB,#1E4691);box-shadow:0 0 0 2px #fff}
+.mini .id i{position:absolute;left:18px;right:18px;top:88px;height:6px;border-radius:3px;background:var(--ink)}
+.mini .id i + i{left:26px;right:26px;top:100px;height:5px;background:var(--blue-100)}
+
+/* footer */
+footer{padding:36px 0 48px;color:var(--ink-3);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;border-top:1px solid var(--line);padding-top:20px}
+footer a{color:var(--ink-2)}
+footer .right{margin-left:auto}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+@media (max-width:900px){
+  .sig{grid-template-columns:minmax(0,1fr)}
+  .form{border-right:0;border-bottom:1px solid var(--line)}
+  .profile{grid-template-columns:minmax(0,1fr)}
+  .pp{grid-template-columns:minmax(0,1fr)}
+  .bc{grid-template-columns:minmax(0,1fr)}
+  .mini{display:none}
+}
+@media (max-width:720px){
+  .brand b{display:none}
+  .nav a:not(.cta){display:none}
+  .bar .t{width:100%}
+  .gif{grid-template-columns:minmax(0,1fr)}
+  .gif img{width:140px;height:140px}
+  .gif-pair img{width:128px;height:128px}
+  .faces{gap:8px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="business-cards/logo-h.svg" alt="TechNext" width="130" height="26"><b>Branding Miscellaneous</b></a>
+    <nav class="nav" aria-label="Site">
+      <a href="https://technextsg.github.io/technext-marketing-hub/">Marketing Hub</a>
+      <a href="https://technextsg.github.io/technext-marketing-hub/branding.html">Brand guide</a>
+      <a class="cta" href="https://technext.asia" target="_blank" rel="noopener">technext.asia</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="kicker"><i></i>Staff self-serve &middot; TechNext Pte. Ltd.</span>
+    <h1>Your branded kit, <em>ready to use.</em></h1>
+    <p>Everything you need to look like TechNext in your inbox and on calls: the email signature, your profile photo, the animated logo, video-call backgrounds, business cards and staff ID cards. Each section has a short tutorial.</p>
+    <div class="jump">
+      <a href="#signature" class="rv"><span class="n">1</span><span><b>Email signature</b><small>Gmail and Odoo</small></span></a>
+      <a href="#profile" class="rv"><span class="n">2</span><span><b>Profile photo</b><small>Make your branded photo</small></span></a>
+      <a href="#logo" class="rv"><span class="n">3</span><span><b>Animated logo</b><small>GIF, 800 &times; 800</small></span></a>
+      <a href="#backgrounds" class="rv"><span class="n">4</span><span><b>Video-call backgrounds</b><small>Zoom, Teams, Meet</small></span></a>
+      <a href="#cards" class="rv"><span class="n">5</span><span><b>Business &amp; ID cards</b><small>Print-ready PNG and PDF</small></span></a>
+    </div>
+  </div>
+</section>
+
+<nav class="subnav" aria-label="Sections">
+  <div class="wrap">
+    <a href="#signature">1 Email signature</a><a href="#profile">2 Profile photo</a><a href="#logo">3 Animated logo</a><a href="#backgrounds">4 Backgrounds</a><a href="#cards">5 Business &amp; ID cards</a>
+  </div>
+</nav>
+
+<!-- 1 EMAIL SIGNATURE -->
+<section id="signature">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">1</span><h2>Email signature</h2><p>Fill in your details, check the preview, copy it into Gmail or Odoo.</p></div>
+    <div class="card rv">
+      <div class="bar">
+        <div class="t"><b>Signature generator <span class="pill">Gmail + Odoo</span></b><span>Logo, icons and banner load from this page&rsquo;s hosted files. Paste, never re-upload.</span></div>
+        <button class="btn" id="btn-export" type="button" onclick="exportSignature('btn-export')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Export HTML</button>
+        <button class="btn" id="btn-odoo" type="button" onclick="copyOdooSignature('btn-odoo')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4M16 8l4 4-4 4"/></svg>Copy for Odoo</button>
+        <button class="btn p" id="btn-custom" type="button" onclick="copySignature('sig-template', 'btn-custom')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy for Gmail</button>
+      </div>
+      <div class="sig">
+        <div class="form">
+          <div class="field"><label for="f-name">Full name</label><input type="text" id="f-name" placeholder="e.g. John del Monte" autocomplete="name" oninput="updateSigTemplate()"></div>
+          <div class="field"><label for="f-role">Job title</label><input type="text" id="f-role" placeholder="e.g. Sales Executive" autocomplete="organization-title" oninput="updateSigTemplate()"></div>
+          <div class="field"><label for="f-phone">Phone / WhatsApp</label><input type="tel" id="f-phone" placeholder="+63 000 000 0000" autocomplete="tel" oninput="updateSigTemplate()"></div>
+          <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" placeholder="name@technext.asia" autocomplete="email" oninput="updateSigTemplate()"></div>
+          <p class="hint">Name and title turn upper-case automatically. Your phone number becomes a WhatsApp link; a local PH mobile (09&hellip;) is converted to +63.</p>
+        </div>
+        <div class="preview">
+          <div class="lbl">Live preview</div>
+          <div class="paper">
+<div id="sig-template"><table cellpadding="0" cellspacing="0" border="0" style="font-family:Arial,Helvetica,sans-serif;border-collapse:collapse;">
+  <tr>
+    <!-- Info -->
+    <td style="vertical-align:top;">
+      <!-- Name -->
+      <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:2px;">
+        <tr>
+          <td style="font-size:20px;font-weight:900;color:#111111;font-family:Arial,sans-serif;padding-right:10px;line-height:1;vertical-align:middle;"><span id="t-name">FULL NAME</span></td>
+          <td style="padding:0 10px;vertical-align:middle;border-left:1px solid #cccccc;">
+            <img src="https://technextsg.github.io/technext-branding-miscellaneous/sig/logo-h.png" width="110" height="22" alt="TechNext" style="display:block;border:0;">
+          </td>
+        </tr>
+      </table>
+      <!-- Title / Company -->
+      <div style="margin:0 0 4px 0;font-size:11px;color:#888888;font-family:Arial,sans-serif;letter-spacing:1.2px;font-weight:500;"><span id="t-role">JOB TITLE</span> &bull; TECHNEXT PTE LTD.</div>
+      <!-- Contact -->
+      <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:5px;">
+        <tr>
+          <td style="padding-right:10px;padding-bottom:2px;vertical-align:middle;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIqSURBVEhL7ZUxaNtAFIb/J9lYBxkyZOjQoUOHFFpISseWBuyOhRQ6pGO2rl7MycKIg4DtyUOXdgtkyNgWDFlsunhPhwweOnTI4CFDhmKpYOl1sBROZ6e2FY/5QEj//574udPdCbhnzZAufN8vOI5zAODxTQNRGEVR1/O8C703L5YuhBD7RHRCRH56AWhalnWm992FTCAzb+g6hYgedjqdTdPPQyYQwKWhbwjDcP2BcRyPdK1jWdaO6eUhE1gsFq90bfDaNPKQCazVaiMAP3Vv3ZjfEMz8fY43mkwmX0w/DzOBtm1/M6whM7/yPG9o+LnIbPyUVqt1DmCHma9s236WTPVamBkhpvtOJfetKIq2zfpdmDtCTEf5A8AegGEQBLtKqdDsycPcEWK6UFTyuC2E+GSUc2ObRkq/3/9dLpeJiPYAPK9UKn97vd7A7FuVW6c0pdlsnhLRQSKPgiBQSqmJ3uP7fqFUKn0kopCILkql0rBarV7rPSkLA33f33Ac54yIXmI61QMi+iClvEzqBcdxTonovf4eM48ADOI4buhbamEgklAhxAmA/cS6JqLD8XjcnRemw8wN13WPUn3rotFRSv2RUr4DkL64ycxfhRDn/wtLKOhiqcAUKWUjjuO32nn71GhZyEqBAFCv17tSyl1mPgTwy6wvYuXAFNd1j4MgeMLMbwB8Zua5P28iyhwYSy2aZWm32y+iKNoiogcAHhFRaFnW8TrP4ntm+Ad/cbYlb8jwrwAAAABJRU5ErkJggg==" width="14" height="14" alt="" style="display:block;border:0;"></td>
+          <td style="font-size:12px;color:#444444;font-family:Arial,sans-serif;padding-bottom:2px;vertical-align:middle;">
+            <a href="https://wa.me/630000000000" id="t-phone-link" target="_blank" rel="noopener" style="color:#444444;text-decoration:none;"><span id="t-phone">+63 000 000 0000</span></a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-right:10px;padding-bottom:2px;vertical-align:middle;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIRSURBVEhL7Za/axRBFMe/M3fFHqSwSHlFirMIGIiQxkKIEAvBP8AUgo1FKm08ZmaV5dDbGc+FFCJYBGKRQrCxTBFICsGAgsUFtEhhmeIKC2FzsDvP4m7Xub0Tz7sTFO5T7bz39n1mf8zOAnP+d1gxEIZhjTFWLcYnwVrb8X3/xI3lwiiKFpMkeQNg3S2YFiL6SESbSqlTAOBZIkmSe7OWAQBjbI1zHmTjXAigit6MjonIAEic3CTsAHjbP84fkSsEejM6l1LKNE0vE9FxMT8GXwBcFULcBfCtmBwSElGt2Wxe8n3/REp5xVq7NerEEZwT0aM4jleEEO+01ksAVotFQ0LGWLVUKn0yxjwOgsBTSr3knC8T0etircOBtXZFSvkEAIwx9xlj7bGEfcoAHlYqlbbWer1er59JKTettTcAfM2KiKhDRLeFENeVUqetVmvV87z3ALYBLAy27PErYUaNMXZojNmNomhRKbUfx/Fy/6Xa8TzvopRyLwiCBa31M2vtB8bYWrGJS74OjTG7AO4Mpn9CRB0AD6SUr9x4GIY3OefPASy58QJHQohr+BOhw4G1dqtcLn9P03SbMXarWDCCXPi7WzqKDc5521r7eUzZAJMIAcADcKEYHIdJhRMzF86cXNhfZ38Ft7d7hS/cz9asIKIzzvnTbDz0i6G13nD3r2kgok63291vNBrT7q1z/iF+AJBAzBYTIPeiAAAAAElFTkSuQmCC" width="14" height="14" alt="" style="display:block;border:0;"></td>
+          <td style="font-size:12px;color:#444444;font-family:Arial,sans-serif;padding-bottom:2px;vertical-align:middle;">
+            <a href="mailto:email@technext.asia" id="t-email-link" style="color:#444444;text-decoration:none;"><span id="t-email">email@technext.asia</span></a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-right:10px;vertical-align:middle;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANTSURBVEhL5ZUxaBRBFIb/t7twu4tFCsEUghYnKAaxUOsoayFYWChoIdgKFl5hdi9HGLa53UuKs7RTUUHQUlBwgxYpLCwiCJ4gaBEkYpPCZHPB3WdxM8veZO9OLfVrbub9M/PvzLx7A/zrkB4YhRDCrtVqnmEYM0S0D4CV5/k3IuqlafoiDMMf+pwqJhq22+06EUVEdB6AreuSnwASIlrwff+tLpYZaSiEsFzXXWLmGwAsXR/DwzRNr4/acaVht9ud6vf7TwB4ulYFM78BUCeivTK0ahjGubm5uXVtKAw9IISw/sQMA8NHtm0fIqLbMnQ8z/OXQog92tDdhq7rLv2h2Zt+v3+v0Whs+L7fANCQ0ozjOA+04cNH2m6364ZhfBh3Z8y8DuAKAJimubG5ufk+DMOf5TGdTqfLzDfl+NPNZvO10oYWJqJIj+kQ0XYQBMUCVWxtbTVt275MRNMAlgCcVFpxpEIIW6b+JLb1gE4YhttE1MHgA09EUXRQaYVhrVbzxvzPegBeA0jyPL+li1WkaXpHtZm52EhhaBjGjGxulLINGEzoBEFwOgiCs/Pz88/K2ijCMNwG8AmDtY+qeGEoyxUAfPF9v6Gb/iU9+TutAuUEUW0LAHzfb3Q6HTDzTSK6G8fx3dLYAmZeA3C1nIkVFD7FDvM8/yabh4UQNqTppJ0S0X4As3ocg485LptFxSkfqdq+5bquus/fMq2i2+1OyY8BgI8qXhimafpCVn0w89AX+77fYObH5dgkdnZ2ijWyLCsSrTCU1T2R3dbi4mJx0RicwLtyvwwRHYiiaFbVTiGEzcyRlHutVkud3nAtJaIF2ZzKsqxb1uSLMIprRPTKcZzvcRxfdBynBeCw1NSaAACz3EmS5KvneXUAx4hoxvO8fpIkKwCwvLz8xfM8C8CpMeXPYuYzROQBMJh5pdlsDhWKXa9FmqbXAazKbhTH8QN1VEEQLDDzkeEZw8g30WLmNdM0L+3S9QAAxHG8H8BzACpbVwHcB/CUmS0i+qxNGYKZ1/I8P1u+O0WlIQYXv0e+Zxc06ROAuhYrYOYV0zQvVb32GGeoiKJoFsASEZ3QNY0egIUgCJ7qQpmJhoooig4y83lZiKdl4qwD+Jhl2bOq4/s/+QXdjkAM+D6j5AAAAABJRU5ErkJggg==" width="14" height="14" alt="" style="display:block;border:0;"></td>
+          <td style="font-size:12px;color:#444444;font-family:Arial,sans-serif;vertical-align:middle;">
+            <a href="https://technext.asia" style="color:#444444;text-decoration:none;">technext.asia</a>
+          </td>
+        </tr>
+      </table>
+      <!-- CTA -->
+      <table cellpadding="0" cellspacing="0" border="0" style="margin-bottom:7px;">
+        <tr>
+          <td style="padding-right:10px;vertical-align:middle;font-size:12px;line-height:16px;">
+            <a href="https://technext.asia" style="font-size:12px;font-weight:700;color:#3167CA;text-decoration:none;font-family:Arial,sans-serif;">Odoo ERP Solution and AI Automation</a><br>
+            <span style="font-size:11px;font-weight:600;color:#666666;font-family:Arial,sans-serif;letter-spacing:0.2px;line-height:15px;">IoT &bull; Apps &bull; Networks</span>
+          </td>
+        </tr>
+      </table>
+      <!-- Social Icons -->
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="padding-right:6px;vertical-align:middle;"><a href="https://www.facebook.com/technextasia" target="_blank" style="text-decoration:none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAATdSURBVGhD3ZpfaFNXHMc/v5OiVSpzECSbdSusW1+EVYxTmdtanxzUtQMFx4SYdvggMvY0FRlaxvBxDwob/qkW9maFaJUJezCDiUZTLFixQietiBYWN6edFhfvbw9tYu5pWpPb2zbZBwK53++hzZdz7jm5v18EP9nRV8XTJy0gtQhLgRAQBAkBoKQQHUZNCpwhRAap4CyHwyn7T3lFbKFotieDpGlCtRmRDUClPWRKlDRCHPQU5vlZjq65aw8pBu+B2npqcdgLuhWhwrY9oxrDcdrpXN1rW4VQfKBIIkSgYheqO30NYqNyAsN3HFs5YFtTUVygaHI3ortAFtvWDDGKyCGqH+2hvTFtm/koLNCOviqejh5B2GJbs0ScCjYXsnm8PFAkEcIEuhHCtjWrqA7gyEY6w/22lcvUgVqvLAfzy/j2O/eojoB8zPHwb7aVYfJAkUSIQOBayYTJoDqC6Fo63uuzLQBjCzB+z5hAd8mFARCpAtNNJJH3s+UPNLYBzO09MzU1BMxJ9l2YcGxMDBRN7p7D3awIZB13Fh2coLquIokQAXNzFs+Z6aGkEWdF7v3kDtTa8z3oVy7NR6rmG+rfWEi4ZiGLF75YLb13nhC79tA1tmBUYxxf9Wnm8kWgtp5aHL05U19ndq5fwoFNS6maP3GVn7j4gGjHoC0Xjmgjx1bFcd1DDntnKkz3l7Uc/HxZ3jC+oLIv83bsP2xPBkG35o7xi53rl9D07iu27DcNRBL1ZAOlaZqJ2akwwoFNS215ZjCmhWwg1Wbb94Pl1QsmLLO0o/x06U/az9zPvk573RByEWkGEHb0VTE6+kfRT5oF8MWHQY5E3nRpXcm/2PzDbZfmGyJvm7EagP9hAKpfnWdL3Lg3akv+4egmA1Jr6+WL1Jnx6sz/A9FqofVqN0iT7XmhJjiPbe8Hs9cf1VXRULfINSZ+6zG/3hpxaZd/H+F83yOX5pFeofXqJZA1tuOFhrpFXPj6HVt+KdGOQU5cfGDLXhg22SLgHBK/9diWvBIyqP8HajEMpp4xmHpmy54xwLAtziY+zg6opoRo8meEDbbnBS+bwvnrf3P59j+uMZ5R+oRoz3FEt9meH+xvfp19n7zm0trP3Gf/6XsuzUfiBpwhWy1bVAYNyrSq/aWFM2SYJzGUgurGJY/jxAyHw6mx/kyZozpA5+re8YcVPWX7ZYfQRfYBzzw/a/tlh8o5soGOrrmLasweU0b0Zgr4OVUfpz13RJmR/ezuQqPPh2zLisU0r3AXYU9fe+i9qJifOB3hxsyFO1BbTy2q12fqkXxGUD7I7Re5SzLHVg4gcsillTZddvNrYimz+tEeKIdzSfuprIzaav4O3vZkkH/1ElKiBRTVFMaszdfynzhDAIfDKRzZONbTLDGUNIbN+cIwaSCAznA/htIKpaRBP8t0GvKRf8nlMtYJ7wZqbGtWUU2NzczkYSgoENnO3kmQdbY1O2g/YjZOtsxymXzJ5dK5ephlI40oP87Bo0YXlQtWFRKGgmcol9Yry1H5FpEW2/KZOMo39jnzMooPlKHtasN456zBtqZJL9BOR9jTl2XvgTJEEvUY0zLen6m37YJQHUDoQuVcsTNiM/1AubT11PLc2YKYtxCtRgkhBLO/SFFNgQwjpFAZBGcIx4l5/bFfPv4DpZWRKWon5mQAAAAASUVORK5CYII=" width="26" height="26" alt="Facebook" style="display:block;border:0;border-radius:13px;"></a></td>
+          <td style="padding-right:6px;vertical-align:middle;"><a href="https://www.instagram.com/technextasia/" target="_blank" style="text-decoration:none;"><img src="data:image/png;base64,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" width="26" height="26" alt="Instagram" style="display:block;border:0;border-radius:13px;"></a></td>
+          <td style="padding-right:6px;vertical-align:middle;"><a href="https://www.linkedin.com/company/technextasia/" target="_blank" style="text-decoration:none;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVhSURBVGhD3ZpdaFNnGMd/z5vO1q5uFTOJWGthFd3mWMQ4FWVU2cUGig4mKCixVWSIN2MMdc45EXc12MWEbX4XvJBZWUG9GDrWC0WjlfWi08DK5id2W0SnzmazPc8u0sScN2l6Em2a7geBvM//OeH8ec/7cZ43wtNkfWcVPQ+XgtQjTAQCgB8kAIASQ7QbNTFwriJyhTKOszsUs3+qUMQO5M26dj+9LEJ1CSJvARV2Sk6UXoQ20KOYvuPsnXPDTsmHwg2tuViPwxbQlQhltlwwqq04znaaZ3fYkhfyNxSOBPCVbUR1w1M1YqNyEMNO9s3ssqVc5GeosX0TohtBqm1piIgjsouae5vZvqDXFrPhzdD6zip64nsQlttSkWijjGVeJo/BDYUjAYzvGELIloqKaheOLKY5FLWldHIbajo/HczJ/ul3+FF9API2B0KnbSnJwIbCkQA+308lYyaJ6gNE57L/9U5bAjB2APrHjPEdKzkzACJVYI4RjmS9t+yGEhPA8I6Z3NThM0fY9mPGspFpqLF90zDOZnkg87k25suMqKsVjgTwmctFXGeeDKUXcWakjyd3D/nKPC+a1ZU+Niwcz4aF46mu9NlycRDKUNnhDiVZc7EeRy972c5UV/o4+9E0pk1I7EOjt+LM/SzK3Yd9dmpxEF3AvlltuHrIYYsXMwAr54xLmQGYNqGClXPGuXKKisq25NeEoXXtftCV6TkjjAbCkSApQ70s8to7AIfO3SZ6K55qR2/FOXTutiun6BizlNQYarzwHSJL7ZxcVFf6Uo/ZoXO3h2/8PKaD/aEZwvrOKuLxP/N+0yxFRKaYRA3gf2AGwNF3hcYLnyKPZ4mhpLrSx+p545g5+VmCtaMpM0LnzR4iv/7N4fN3uHHnX/uS/FA5KDRd2AOy1tZysXreOMLz3NN085nbHDwz8MTw5svPcaBpMjVjR9kSAHcf9vH+4es5f8MDp0whO+o6fzkNU8e4PnX+cjstxdo3/Jz8YMqAZujvvQNNdXy1qtaW8sFvEnWzoWPahAq+WD7JDg/Iew0vsOi15+2wVwImVQQcIr5aVUtVeeamPheFXNNPwKDeF9R8qSo3NEwdY4dpab/Dq59c4qWPf+bz73+3ZWrGjiJYW2mHPWGAbjv4tMh2U503e1jxzW903uwheivOh9/eoKX9jp1GcFLmtYOiGjPAoKWhQgnVZd7UqUv36XXUFfvh8n1XG+CViYUsjdJtQIash6orM5/mv3oyt0jxR44douKZAsaQEDPgXLXjIxaVKwbliar9pYVz1TBKWlE81Y1LHsdpNewOxRLnMyMc1S6aZ3f0jzw9ausjDqGF1Bur6Ttu6yMOlROkDO2dcwPVVjtnBNGRLOA/LmOFI8H+4vygBGsrCU4a7Yp1XO+h49pDV8xrXv34cuZPqXLFuv74h9O/PHDFcvAO+0OtZFROGy8eQHS1K1b6tLE/tCDZcC/Hhp3A43LOSEDZmt50G9o3swuRXa5YadNiH35lbphq7m2GkbAuaZSKikY7mv0Eb127n0d6FpF6WyoJVGMYMzfbkX9mDwHsDsVwZHHiTLPEUHoxLMtmhgENATSHohhKy5TSC7oiedKQjeyPXDqJk/BjQJ0tFRXVWKJnBjaDJ0OkTvaOgMy3peKgUcQsHugxS2fgRy6d5tndTHqwAOXrYXjVaKFi9CwvZvDcQ+k0nZ+Oyo58TysKoA1lq73ODEb+hpKsudDQf3LWYEtPSAewPbk3y5fCDSUJR4IYsxSRJUDQlj2h2oXQgsqJfHvE5skNpbPmYj19znLEvIhoDUoAwZ+qn6vGQLoRYqhcAecqjtNa6J/9svEf/yWk9US/x8EAAAAASUVORK5CYII=" width="26" height="26" alt="LinkedIn" style="display:block;border:0;border-radius:13px;"></a></td>
+          <td style="padding-right:6px;vertical-align:middle;"><a href="https://x.com/technextasia" target="_blank" style="text-decoration:none;"><img src="data:image/png;base64,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" width="26" height="26" alt="X" style="display:block;border:0;border-radius:13px;"></a></td>
+          <td style="padding-right:6px;vertical-align:middle;"><a href="https://www.youtube.com/@technextasia" target="_blank" style="text-decoration:none;"><img src="data:image/png;base64,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" width="26" height="26" alt="YouTube" style="display:block;border:0;border-radius:13px;"></a></td>
+          <td style="padding-right:6px;vertical-align:middle;"><a href="https://www.tiktok.com/@technextasia" target="_blank" style="text-decoration:none;"><img src="data:image/png;base64,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" width="26" height="26" alt="TikTok" style="display:block;border:0;border-radius:13px;"></a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  <!-- Banner -->
+  <table cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;">
+    <tr>
+      <td>
+        <a href="https://technext.asia" target="_blank" style="text-decoration:none;"><img src="https://technextsg.github.io/technext-branding-miscellaneous/sig/banner.png" width="520" height="104" alt="Tech solutions built to scale your business" style="display:block;border:0;border-radius:12px;"></a>
+      </td>
+    </tr>
+  </table>
+  <!-- Confidentiality -->
+  <table cellpadding="0" cellspacing="0" border="0" width="520" style="margin-top:10px;">
+    <tr>
+      <td>
+        <div style="font-size:10px;color:#999999;font-family:Arial,sans-serif;line-height:1.6;margin:0;">This email is confidential and meant only for the person it&rsquo;s addressed to. If you received it by mistake, please let the sender know and delete it. Sharing, copying or using it without permission is not allowed and may be unlawful.</div>
+      </td>
+    </tr>
+  </table>
+  </div>
+          </div>
+        </div>
+      </div>
+      <details class="tut">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>Tutorial <small>Gmail, Odoo and your Google profile picture</small></summary>
+        <div class="tut-body">
+          <div class="tut-col">
+            <h3>Add it in Gmail</h3>
+            <ol class="steps">
+              <li>Click <b>Copy for Gmail</b> at the top of this card.</li>
+              <li>Open <b>Gmail</b>, click the <b>gear icon</b> at the top right and choose <b>See all settings</b>.</li>
+              <li>In the <b>General</b> tab, scroll down to <b>Signature</b>.</li>
+              <li>Click <b>+ Create new</b>, name it (e.g. <b>TechNext</b>), then click <b>Create</b>.</li>
+              <li>Click inside the signature box and paste with <kbd>Ctrl</kbd> + <kbd>V</kbd> (<kbd>Cmd</kbd> + <kbd>V</kbd> on Mac).</li>
+              <li>Under <b>Signature defaults</b>, pick your new signature for <b>For new emails</b> and <b>On reply/forward</b>.</li>
+              <li>Scroll to the very bottom and click <b>Save Changes</b>.</li>
+            </ol>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>The logo and icons load from the web automatically. Just paste; don&rsquo;t re-upload any images.</span></div>
+          </div>
+          <div class="tut-col">
+            <h3>Add it in Odoo</h3>
+            <ol class="steps">
+              <li>Click <b>Copy for Odoo</b> at the top of this card.</li>
+              <li>In Odoo, add <b>?debug=1</b> to the end of the address and press <kbd>Enter</kbd>. This turns on developer mode.</li>
+              <li>Click your <b>avatar</b> in the top right and open your <b>preferences</b>.</li>
+              <li>Click inside the <b>Signature</b> box, then <b>double-click any word</b> so the formatting toolbar appears.</li>
+              <li>Click the <b>&lt;/&gt;</b> icon at the right-hand end of that toolbar. The box switches to plain HTML.</li>
+              <li>Press <kbd>Ctrl</kbd> + <kbd>A</kbd>, then <kbd>Delete</kbd>, then paste with <kbd>Ctrl</kbd> + <kbd>V</kbd>.</li>
+              <li>Click <b>Save</b>, then send a message from any CRM lead to an outside address to check it.</li>
+            </ol>
+            <div class="note warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17h.01"/></svg><span>Always paste into the <b>&lt;/&gt;</b> code view. Pasting into the normal box strips the formatting and blows the logo up to full size.</span></div>
+          </div>
+          <div class="tut-col">
+            <h3>Change your profile picture</h3>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>This changes your <b>Google / Gmail account photo</b> only: the picture people see when you email from your @technext.asia account. Other apps are not affected.</span></div>
+            <ol class="steps">
+              <li>Open <b>Gmail</b> and click your <b>profile photo</b> in the top-right circle.</li>
+              <li>Click the <b>camera icon</b> on your photo, or <b>Manage your Google Account</b>.</li>
+              <li>Go to <b>Personal info</b>, then click your <b>photo</b> under &ldquo;Profile picture&rdquo;.</li>
+              <li>Click <b>Add profile picture</b> (or <b>Change</b>) and upload your image.</li>
+              <li>Crop or reposition it, then click <b>Save as profile picture</b>.</li>
+            </ol>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Animated GIFs play in Google Chat, Meet and opened emails; the inbox list shows their first frame. It can take a few minutes to update everywhere.</span></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 2 PROFILE PHOTO -->
+<section id="profile">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">2</span><h2>Profile photo generator</h2><p>Upload a PNG of yourself and get your branded TechNext circle photo in seconds.</p></div>
+    <div class="card rv">
+      <div class="card-in pp">
+        <div class="pp-stage">
+          <canvas id="pp-canvas" width="1024" height="1024" tabindex="0" aria-label="Profile photo preview. Drag or use the arrow keys to move the photo."></canvas>
+          <div class="pp-tools" id="pp-tools" hidden>
+            <label class="pp-zoom"><span>Zoom</span><input id="pp-zoom" type="range" min="50" max="220" value="100" aria-label="Zoom"></label>
+            <button class="btn sm" id="pp-reset" type="button">Re-centre</button>
+          </div>
+          <p class="pp-hint">Drag the photo to move it, scroll or use the slider to zoom.</p>
+        </div>
+        <div class="pp-side">
+          <label class="pp-drop" id="pp-drop">
+            <input id="pp-file" type="file" accept="image/png,.png" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4m0 0-5 5m5-5 5 5"/><path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+            <b>Upload your photo</b>
+            <span>PNG with the background removed. Drop it here or click to choose.</span>
+          </label>
+          <p class="pp-status" id="pp-status" role="status" aria-live="polite">Upload a PNG with a transparent background. It stays on your device.</p>
+
+          <div class="pp-opts">
+            <div class="pp-row"><span class="pp-k">Ring</span>
+              <button type="button" class="chip" data-opt="ring" data-val="blue" aria-pressed="true"><i style="background:linear-gradient(90deg,#5579D1,#75A1F4)"></i>Blue</button>
+              <button type="button" class="chip" data-opt="ring" data-val="deep" aria-pressed="false"><i style="background:linear-gradient(90deg,#2F63C6,#4F86E8)"></i>Deep blue</button>
+            </div>
+            <div class="pp-row"><span class="pp-k">Background</span>
+              <button type="button" class="chip" data-opt="bg" data-val="white" aria-pressed="true">White</button>
+              <button type="button" class="chip" data-opt="bg" data-val="soft" aria-pressed="false">Soft blue</button>
+              <button type="button" class="chip" data-opt="bg" data-val="none" aria-pressed="false">Transparent</button>
+            </div>
+            <label class="pp-check"><input id="pp-pop" type="checkbox" checked> Let the shoulders pop out over the ring</label>
+          </div>
+
+          <div class="field pp-namef"><label for="pp-name">Your name (for the file name)</label><input id="pp-name" type="text" placeholder="e.g. Pia Cachola" autocomplete="name"></div>
+          <div class="pp-dl">
+            <button class="btn p" type="button" data-size="1024"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Download HD (1024 px)</button>
+            <button class="btn" type="button" data-size="512"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>512 px</button>
+          </div>
+
+          <ul class="pp-tips">
+            <li class="yes">Sharp, well lit, facing the camera, natural smile.</li>
+            <li class="yes">Business attire, head and shoulders in the frame.</li>
+            <li class="yes">PNG with the background removed (transparent), for example from remove.bg or Canva.</li>
+            <li class="no">No group photos, filters, heavy shadows or low-light selfies.</li>
+          </ul>
+          <p class="pp-wa">No PNG with the background removed? <a href="https://wa.me/639202478918?text=Hi%21%20I%27d%20like%20my%20TechNext%20branded%20profile%20photo.%20Here%27s%20my%20photo%3A" target="_blank" rel="noopener">Send your photo to the Marketing Lead on WhatsApp</a> (0920 247 8918) and they will make it for you.</p>
+        </div>
+      </div>
+      <details class="tut">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>Tutorial <small>Make your photo and set it on Gmail</small></summary>
+        <div class="tut-body">
+          <div class="tut-col">
+            <h3>Make the photo</h3>
+            <ol class="steps">
+              <li>Remove the background from a sharp head-and-shoulders photo (for example with remove.bg or Canva) and save it as a <b>PNG</b>.</li>
+              <li>Click <b>Upload your photo</b> and choose the PNG. It is placed in the ring straight away.</li>
+              <li><b>Drag</b> the photo so your head sits under the logo, and <b>zoom</b> until your shoulders fill the bottom of the ring.</li>
+              <li>Pick the ring and background, then click <b>Download HD</b>.</li>
+            </ol>
+          </div>
+          <div class="tut-col">
+            <h3>Use it</h3>
+            <ol class="steps">
+              <li>Set it as your <b>Google / Gmail profile picture</b> (steps in the email signature tutorial).</li>
+              <li>Use the same file on LinkedIn, Odoo, Teams and WhatsApp so you look the same everywhere.</li>
+            </ol>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Gmail crops photos to a circle; the ring sits right on that circle, so it frames your photo there too. Natural daylight from a window in front of you gives the cleanest result.</span></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 3 ANIMATED LOGO -->
+<section id="logo">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">3</span><h2>Animated logo</h2><p>For your Gmail profile, emails and presentations.</p></div>
+    <div class="card rv">
+      <div class="card-in gif">
+        <div class="gif-pair">
+          <figure><img src="animated-logo/technext-profile-light-256.gif" alt="TechNext animated logo, light" width="180" height="180"><figcaption>Light</figcaption></figure>
+          <figure><img src="animated-logo/technext-profile-blue-256.gif" alt="TechNext animated logo, blue" width="180" height="180"><figcaption>Blue</figcaption></figure>
+        </div>
+        <div>
+          <h3 style="font-size:20px;font-weight:700">TechNext logo animation</h3>
+          <p class="lead gif-lead">The technext.asia intro in a circle: the plane loops in with its trail, lands with a ripple and sparks, and a light sweeps across it.</p>
+          <div class="specs"><span>GIF</span><span>Loops</span><span>Light or blue</span><span>512 &times; 512 px</span><span>256 px for Gmail</span></div>
+          <div class="gif-dl">
+            <button class="btn p" type="button" onclick="downloadGif('light', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Download light</button>
+            <button class="btn p" type="button" onclick="downloadGif('blue', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Download blue</button>
+          </div>
+          <p class="gif-small">Gmail profile size (256 &times; 256 px, under 1 MB): <a href="animated-logo/technext-profile-light-256.gif" download="TechNext-Profile-Light.gif">light</a> &middot; <a href="animated-logo/technext-profile-blue-256.gif" download="TechNext-Profile-Blue.gif">blue</a></p>
+        </div>
+      </div>
+      <details class="tut">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>Tutorial <small>Gmail profile, slides and email</small></summary>
+        <div class="tut-body">
+          <div class="tut-col">
+            <h3>As your Gmail profile picture</h3>
+            <ol class="steps">
+              <li>Download the <b>Gmail profile size</b> GIF (light or blue) above.</li>
+              <li>In <b>Gmail</b>, click your <b>profile photo</b> in the top-right circle, then <b>Manage your Google Account</b>.</li>
+              <li>Go to <b>Personal info</b> and click your photo under &ldquo;Profile picture&rdquo;.</li>
+              <li>Click <b>Change</b>, upload the GIF, keep the plane centred in the circle and click <b>Save as profile picture</b>.</li>
+            </ol>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>The animation plays in <b>Google Chat</b>, <b>Meet</b>, your expanded profile and opened emails. The inbox list shows the first frame, which is the finished logo.</span></div>
+          </div>
+          <div class="tut-col">
+            <h3>In a presentation (PowerPoint / Google Slides)</h3>
+            <ol class="steps">
+              <li>Click <b>Download light</b> or <b>Download blue</b> to save the 512 px GIF.</li>
+              <li>In your slide, go to <b>Insert &rarr; Image</b> (or <b>Insert &rarr; Picture</b>) and pick the GIF.</li>
+              <li>Resize and position it. It animates automatically in <b>Slide Show / Present</b> mode.</li>
+            </ol>
+          </div>
+          <div class="tut-col">
+            <h3>In an email</h3>
+            <ol class="steps">
+              <li>In Gmail, click <b>Insert photo</b> in the compose toolbar and upload the GIF (choose <b>Inline</b>).</li>
+              <li>Send yourself a test email first to check the animation plays.</li>
+            </ol>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Most email apps and slide software play the animation. A few older email apps show only the first frame; that&rsquo;s normal.</span></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 4 VIDEO-CALL BACKGROUNDS -->
+<section id="backgrounds">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">4</span><h2>Video-call backgrounds</h2><p>Four TechNext &times; Odoo designs for Zoom, Teams and Google Meet, 1920 &times; 1080.</p></div>
+    <div class="card rv">
+      <div class="card-in">
+        <div class="bgs">
+          <div class="bg">
+            <img src="backgrounds/bg-1-normal.png?v=4" alt="Light background, TechNext and Odoo logos, soft blue arcs and a paper-plane flight path" width="1920" height="1080" loading="lazy">
+            <div class="foot"><b>Daylight</b>
+              <a class="btn p sm" href="backgrounds/bg-1-normal.png" download="TechNext-VideoCall-Daylight-Normal.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Normal</a>
+              <a class="btn sm" href="backgrounds/bg-1-inverted.png" download="TechNext-VideoCall-Daylight-Inverted.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Mirrored</a>
+            </div>
+          </div>
+          <div class="bg">
+            <img src="backgrounds/bg-2-normal.png?v=4" alt="White background, TechNext and Odoo logos, floating ERP app tiles" width="1920" height="1080" loading="lazy">
+            <div class="foot"><b>Modules</b>
+              <a class="btn p sm" href="backgrounds/bg-2-normal.png" download="TechNext-VideoCall-Modules-Normal.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Normal</a>
+              <a class="btn sm" href="backgrounds/bg-2-inverted.png" download="TechNext-VideoCall-Modules-Inverted.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Mirrored</a>
+            </div>
+          </div>
+          <div class="bg">
+            <img src="backgrounds/bg-3-normal.png?v=4" alt="Navy background, TechNext and Odoo logos, glowing flight paths" width="1920" height="1080" loading="lazy">
+            <div class="foot"><b>Midnight</b>
+              <a class="btn p sm" href="backgrounds/bg-3-normal.png" download="TechNext-VideoCall-Midnight-Normal.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Normal</a>
+              <a class="btn sm" href="backgrounds/bg-3-inverted.png" download="TechNext-VideoCall-Midnight-Inverted.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Mirrored</a>
+            </div>
+          </div>
+          <div class="bg">
+            <img src="backgrounds/bg-4-normal.png?v=4" alt="Brand-blue background, TechNext and Odoo logos, soft orbit rings" width="1920" height="1080" loading="lazy">
+            <div class="foot"><b>Horizon</b>
+              <a class="btn p sm" href="backgrounds/bg-4-normal.png" download="TechNext-VideoCall-Horizon-Normal.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Normal</a>
+              <a class="btn sm" href="backgrounds/bg-4-inverted.png" download="TechNext-VideoCall-Horizon-Inverted.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0 5-5m-5 5-5-5M4 20h16"/></svg>Mirrored</a>
+            </div>
+          </div>
+        </div>
+        <div class="note" style="margin-top:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span><b>Normal</b> reads correctly to everyone else on the call. <b>Mirrored</b> is flipped left to right; pick it only if your app shows the logo backwards in your own self-view and that bothers you.</span></div>
+      </div>
+      <details class="tut">
+        <summary><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>Tutorial <small>Zoom, Teams and Google Meet</small></summary>
+        <div class="tut-body">
+          <div class="tut-col">
+            <h3>Zoom</h3>
+            <ol class="steps">
+              <li>Download a background above.</li>
+              <li>Open <b>Settings</b> &rarr; <b>Background &amp; Effects</b>.</li>
+              <li>Under <b>Virtual Backgrounds</b>, click <b>+</b>, then <b>Add Image</b>, and pick the file.</li>
+            </ol>
+          </div>
+          <div class="tut-col">
+            <h3>Microsoft Teams</h3>
+            <ol class="steps">
+              <li>Before or during a call, click <b>More</b> (&hellip;) &rarr; <b>Video effects and settings</b> / <b>Background effects</b>.</li>
+              <li>Click <b>Add new</b>, upload the background, select it and click <b>Apply</b>.</li>
+            </ol>
+          </div>
+          <div class="tut-col">
+            <h3>Google Meet</h3>
+            <ol class="steps">
+              <li>In the preview or during a call, click <b>Apply visual effects</b> (the sparkle icon).</li>
+              <li>Under <b>Backgrounds</b>, click the <b>+</b> tile and upload the background.</li>
+            </ol>
+            <div class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Not sure which to pick? Start with <b>Normal</b>. If the logo looks mirrored in your own preview, that&rsquo;s just your self-view; others see it the right way round.</span></div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 5 BUSINESS CARDS -->
+<section id="cards">
+  <div class="wrap">
+    <div class="sec-head"><span class="n">5</span><h2>Business &amp; ID cards</h2><p>One generator for both: business cards with a vCard QR, and staff ID cards with your photo.</p></div>
+    <div class="card rv">
+      <div class="card-in bc">
+        <div>
+          <h3>Business &amp; ID card generator</h3>
+          <p><b>Business card</b> (3.5 &times; 2 in): pick your name or add yourself, check the contact side with its vCard QR and the blue brand side. <b>Staff ID card</b> (CR80, bank-card size): upload a PNG headshot, a transparent one gets a brand background and is framed for you; the back carries your details and a barcode. Both download as a 600 or 1200 dpi PNG or a print PDF with optional bleed.</p>
+          <div class="acts">
+            <a class="btn p" href="business-cards/#business"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>Business cards</a>
+            <a class="btn p" href="business-cards/#id"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>ID cards</a>
+            <a class="btn" href="https://technextsg.github.io/technext-marketing-hub/branding.html#logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>Logo files</a>
+          </div>
+        </div>
+        <div class="mini" aria-hidden="true">
+          <div class="back"><img src="business-cards/plane-white.svg" alt=""></div>
+          <div class="front"><img src="business-cards/logo-h.svg" alt=""><i></i><i></i><i></i></div>
+          <div class="id"><span class="hd"><img src="business-cards/logo-h-white.svg" alt=""></span><span class="ph"></span><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>TechNext Pte. Ltd. &middot; Branding Miscellaneous &middot; internal use</span>
+    <a href="https://technextsg.github.io/technext-marketing-hub/">Marketing Hub</a>
+    <a href="https://technextsg.github.io/technext-marketing-hub/branding.html">Brand guide</a>
+    <a href="https://github.com/TechNextSG/technext-branding-miscellaneous" target="_blank" rel="noopener">Edit this page</a>
+    <span class="right">Updated 2 Oct 2026</span>
+  </div>
+</footer>
+
+<script>
+  // Local sig/ images are for on-page preview only. Copied signatures must
+  // reference this hosted base, or images break in recipients' inboxes.
+  const HOSTED_BASE = 'https://technextsg.github.io/technext-branding-miscellaneous/sig/';
+
+  function hostedClone(sigId) {
+    const clone = document.getElementById(sigId).cloneNode(true);
+    clone.querySelectorAll('img').forEach(img => {
+      const src = img.getAttribute('src');
+      if (src && src.startsWith('sig/')) img.setAttribute('src', HOSTED_BASE + src.slice(4));
+    });
+    return clone;
+  }
+
+  async function copySignature(sigId, btnId) {
+    const btn = document.getElementById(btnId);
+    const clone = hostedClone(sigId);
+    let ok = false;
+    if (navigator.clipboard && window.ClipboardItem) {
+      try {
+        await navigator.clipboard.write([new ClipboardItem({
+          'text/html': new Blob([clone.outerHTML], { type: 'text/html' }),
+          'text/plain': new Blob([clone.textContent], { type: 'text/plain' })
+        })]);
+        ok = true;
+      } catch (e) { /* fall through to execCommand */ }
+    }
+    if (!ok) {
+      const holder = document.createElement('div');
+      holder.style.cssText = 'position:fixed;left:-9999px;top:0;';
+      holder.appendChild(clone);
+      document.body.appendChild(holder);
+      const range = document.createRange();
+      range.selectNode(clone);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      ok = document.execCommand('copy');
+      sel.removeAllRanges();
+      holder.remove();
+    }
+    flashButton(btn, ok ? 'Copied' : 'Copy failed', ok);
+  }
+
+  // Current form values, with the same placeholders the preview shows.
+  function sigValues() {
+    const v = (id) => document.getElementById(id).value.trim();
+    const phone = v('f-phone');
+    const email = v('f-email');
+    return {
+      name:  v('f-name') ? v('f-name').toUpperCase() : 'FULL NAME',
+      role:  v('f-role') ? v('f-role').toUpperCase() : 'JOB TITLE',
+      phone: phone || '+63 000 000 0000',
+      email: email || 'email@technext.asia',
+      wa:    toWaNumber(phone || '+630000000000')
+    };
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  // Odoo-safe signature: same content as the Gmail one, but div-based (Odoo's
+  // editor turns tables into bordered editor tables), hosted images only (Gmail
+  // blocks base64 images) and explicit sizes, since the image files are larger
+  // than they display. It goes into Odoo through the signature field's </> code view.
+  function odooSignatureHTML() {
+    const s = sigValues();
+    const H = HOSTED_BASE;
+    const F = 'Arial,Helvetica,sans-serif';
+    const icon = (file, px, extra) =>
+      '<img src="' + H + file + '" alt="" width="' + px + '" height="' + px + '" style="width:' + px + 'px;height:' + px +
+      'px;display:inline-block;vertical-align:middle;border:0;' + extra + '">';
+    const contact = (file, href, text, bottom, blank) =>
+      '  <div style="margin:0 0 ' + bottom + 'px 0;font-size:12px;font-family:' + F + ';">\n' +
+      '    ' + icon(file, 14, 'margin-right:10px;') + '\n' +
+      '    <a href="' + href + '"' + (blank ? ' target="_blank" rel="noopener"' : '') +
+      ' style="color:#444444;text-decoration:none;">' + text + '</a>\n' +
+      '  </div>';
+    const socials = [
+      ['fb.png', 'https://www.facebook.com/technextasia', 'Facebook'],
+      ['ig.png', 'https://www.instagram.com/technextasia/', 'Instagram'],
+      ['li.png', 'https://www.linkedin.com/company/technextasia/', 'LinkedIn'],
+      ['x.png',  'https://x.com/technextasia', 'X'],
+      ['yt.png', 'https://www.youtube.com/@technextasia', 'YouTube'],
+      ['tt.png', 'https://www.tiktok.com/@technextasia', 'TikTok']
+    ];
+    const social = socials.map(function (row, i) {
+      const gap = i < socials.length - 1 ? 'margin-right:6px;' : '';
+      return '<a href="' + row[1] + '" target="_blank" rel="noopener" style="text-decoration:none;">' +
+        '<img src="' + H + row[0] + '" alt="' + row[2] + '" width="26" height="26" style="width:26px;height:26px;display:inline-block;border:0;border-radius:13px;' + gap + '"></a>';
+    }).join('');
+    return [
+      '<div style="font-family:' + F + ';color:#444444;">',
+      '  <div style="margin:0 0 4px 0;line-height:1;">',
+      '    <strong style="font-size:20px;font-weight:900;color:#111111;font-family:' + F + ';vertical-align:middle;">' + escHtml(s.name) + '</strong>',
+      '    <span style="display:inline-block;vertical-align:middle;border-left:1px solid #cccccc;padding-left:10px;margin-left:10px;line-height:0;"><img src="' + H + 'logo-h.png" alt="TechNext" width="110" height="22" style="width:110px;height:22px;display:block;border:0;"></span>',
+      '  </div>',
+      '  <div style="margin:0 0 6px 0;font-size:11px;color:#888888;font-family:' + F + ';letter-spacing:1.2px;font-weight:500;">' + escHtml(s.role) + ' &bull; TECHNEXT PTE LTD.</div>',
+      contact('ph.png', 'https://wa.me/' + s.wa, escHtml(s.phone), 2, true),
+      contact('em.png', 'mailto:' + escHtml(s.email), escHtml(s.email), 2, false),
+      contact('wb.png', 'https://technext.asia', 'technext.asia', 6, true),
+      '  <div style="margin:0 0 7px 0;font-size:12px;line-height:16px;font-family:' + F + ';">',
+      '    <a href="https://technext.asia" target="_blank" rel="noopener" style="color:#3167CA;text-decoration:none;font-weight:700;"><strong>Odoo ERP Solution and AI Automation</strong></a><br>',
+      '    <span style="font-size:11px;font-weight:600;color:#666666;letter-spacing:0.2px;line-height:15px;">IoT &bull; Apps &bull; Networks</span>',
+      '  </div>',
+      '  <div style="margin:0 0 14px 0;line-height:0;">' + social + '</div>',
+      '  <div style="margin:0 0 10px 0;line-height:0;">',
+      '    <a href="https://technext.asia" target="_blank" rel="noopener" style="text-decoration:none;"><img src="' + H + 'banner.png" alt="Tech solutions built to scale your business" width="520" height="104" style="width:520px;height:104px;max-width:100%;display:block;border:0;border-radius:12px;"></a>',
+      '  </div>',
+      '  <div style="font-size:10px;color:#999999;font-family:' + F + ';line-height:1.6;max-width:520px;">This email is confidential and meant only for the person it&rsquo;s addressed to. If you received it by mistake, please let the sender know and delete it. Sharing, copying or using it without permission is not allowed and may be unlawful.</div>',
+      '</div>'
+    ].join('\n');
+  }
+
+  // Swap the button label for a moment, keeping its icon; restore after 2 s.
+  function flashButton(btn, text, ok) {
+    if (!btn.dataset.html) btn.dataset.html = btn.innerHTML;
+    const icon = btn.querySelector('svg');
+    btn.innerHTML = (icon ? icon.outerHTML : '') + text;
+    btn.classList.toggle('copied', ok);
+    clearTimeout(btn._t);
+    btn._t = setTimeout(function () { btn.innerHTML = btn.dataset.html; btn.classList.remove('copied'); }, 2000);
+  }
+
+  // Copies the Odoo HTML as plain text, for pasting into Odoo's </> code view.
+  async function copyOdooSignature(btnId) {
+    const btn = document.getElementById(btnId);
+    const markup = odooSignatureHTML();
+    let ok = false;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try { await navigator.clipboard.writeText(markup); ok = true; } catch (e) { /* fall through */ }
+    }
+    if (!ok) {
+      const ta = document.createElement('textarea');
+      ta.value = markup;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      ok = document.execCommand('copy');
+      ta.remove();
+    }
+    flashButton(btn, ok ? 'Copied' : 'Copy failed', ok);
+  }
+
+  // Slug the name field into a safe filename part: "ada l. byron" -> "Ada-L-Byron".
+  function nameSlug(raw) {
+    const cleaned = (raw || '').replace(/[^A-Za-z0-9 ]/g, ' ').trim().replace(/\s+/g, ' ');
+    if (!cleaned) return '';
+    return cleaned.split(' ')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join('-');
+  }
+
+  // Download the Odoo-safe signature as a raw HTML fragment (no doctype
+  // wrapper), ready for Odoo's </> code view or another HTML field.
+  function exportSignature(btnId) {
+    const btn = document.getElementById(btnId);
+    const markup = odooSignatureHTML();
+    const slug = nameSlug(document.getElementById('f-name').value);
+    const url = URL.createObjectURL(new Blob([markup], { type: 'text/html' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = slug ? 'TechNext-Signature-' + slug + '.html' : 'TechNext-Signature.html';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    flashButton(btn, 'Exported', true);
+  }
+
+  function updateSigTemplate() {
+    const rawName = document.getElementById('f-name').value;
+    const rawRole = document.getElementById('f-role').value;
+    const phone   = document.getElementById('f-phone').value;
+    const email   = document.getElementById('f-email').value;
+    const name = rawName ? rawName.toUpperCase() : 'FULL NAME';
+    const role = rawRole ? rawRole.toUpperCase() : 'JOB TITLE';
+    const el = (id) => document.getElementById(id);
+    if (el('t-name'))       el('t-name').textContent     = name;
+    if (el('t-role'))       el('t-role').textContent     = role;
+    if (el('t-phone'))      el('t-phone').textContent    = phone  || '+63 000 000 0000';
+    if (el('t-email'))      el('t-email').textContent    = email  || 'email@technext.asia';
+    if (el('t-phone-link')) el('t-phone-link').href      = 'https://wa.me/' + toWaNumber(phone || '+630000000000');
+    if (el('t-email-link')) el('t-email-link').href      = 'mailto:' + (email || 'email@technext.asia');
+  }
+
+  // Normalize a phone number into a WhatsApp wa.me number (digits only, international).
+  function toWaNumber(phone) {
+    let d = (phone || '').replace(/[^0-9]/g, '');
+    if (d.startsWith('00')) d = d.slice(2);                 // 00xx intl prefix -> xx
+    else if (d.length === 11 && d.startsWith('0')) d = '63' + d.slice(1); // local PH mobile -> +63
+    return d;
+  }
+
+  // The animated logo, light or blue, at 512 px (sig/logo-animation.gif keeps its old URL with the new design).
+  function downloadGif(variant, btn) {
+    const files = {
+      light: ['sig/logo-animation.gif', 'TechNext-Logo-Animation.gif'],
+      blue: ['animated-logo/technext-logo-blue.gif', 'TechNext-Logo-Animation-Blue.gif']
+    };
+    const f = files[variant] || files.light;
+    const a = document.createElement('a');
+    a.href = f[0];
+    a.download = f[1];
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    flashButton(btn, 'Downloaded', true);
+  }
+
+  // Reveal on scroll + sub-nav scroll spy (same behaviour as the Marketing Hub).
+  (function () {
+    const els = Array.prototype.slice.call(document.querySelectorAll('.rv'));
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(function (ents) {
+        ents.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+      els.forEach(function (el, i) { el.style.transitionDelay = Math.min(i % 6 * 60, 300) + 'ms'; io.observe(el); });
+      setTimeout(function () { els.forEach(function (el) { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); }); }, 800);
+    } else {
+      els.forEach(function (el) { el.classList.add('in'); });
+    }
+    const links = Array.prototype.slice.call(document.querySelectorAll('.subnav a[href^="#"]'));
+    const secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    function spy() {
+      const y = scrollY + 140;
+      let cur = null;
+      secs.forEach(function (s) { if (s && s.offsetTop <= y) cur = s; });
+      links.forEach(function (a) { a.classList.toggle('on', !!cur && a.getAttribute('href') === '#' + cur.id); });
+    }
+    addEventListener('scroll', spy, { passive: true });
+    spy();
+  })();
+</script>
+<script src="profile-photo/generator.js?v=3" defer></script>
+
+</body>
+</html>
