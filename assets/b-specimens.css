@@ -1,0 +1,62 @@
+/* Brand kits: live specimens of each brand's own buttons (in the brand's own fonts and colours) and the TRE tremor field. */
+.tn-btns{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.tn-b{height:46px;padding:0 20px;border-radius:12px;font:600 15px/1 var(--f-body);display:inline-flex;align-items:center;gap:8px;border:1px solid transparent;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s var(--ease),box-shadow .2s,background .2s,color .2s}
+.tn-b svg{transition:transform .2s var(--ease)}
+.tn-b:hover{transform:translateY(-2px)}
+.tn-b:hover svg{transform:translateX(4px)}
+.tn-b:active{transform:scale(.96)}
+.tn-b::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.42) 50%,transparent 70%);transform:translateX(-120%);transition:transform .6s var(--ease)}
+.tn-b:hover::after{transform:translateX(120%)}
+.tn-b.p{background:#3167CA;color:#fff}
+.tn-b.p:hover{background:#1E4691;box-shadow:0 12px 28px -12px rgba(49,103,202,.55)}
+.tn-b.g{background:#fff;color:var(--ink);border-color:var(--line)}
+.tn-b.g:hover{background:#EAF0FB}
+.tn-b.w{background:#fff;color:#1E4691}
+.tn-b.ow{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.tn-b.l{background:none;padding:0;height:auto;color:#3167CA;font-weight:600;text-decoration:underline;text-underline-offset:4px}
+.tn-b.l::after{display:none}
+.tn-darkband{background:linear-gradient(140deg,#0F2350,#1E4691);border-radius:var(--r);padding:18px 20px;display:flex;gap:14px}
+.hb-btn{--b:#F5A623;--f:#F5A623;--t:#242E42;--th:#242E42;position:relative;overflow:hidden;border:1.5px solid var(--b);background:transparent;color:var(--t);border-radius:6px;padding:15px 26px;font:700 13.5px/1 Lato,sans-serif;letter-spacing:1px;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:transform .2s cubic-bezier(.23,1,.32,1),color .3s}
+.hb-btn::after{content:"";position:absolute;inset:0;background:var(--f);clip-path:circle(0% at var(--x,50%) var(--y,50%));transition:clip-path .6s cubic-bezier(.23,1,.32,1);z-index:0}
+.hb-btn span,.hb-btn svg{position:relative;z-index:1}
+.hb-btn svg{transition:transform .2s cubic-bezier(.23,1,.32,1)}
+.hb-btn:hover{transform:translateY(-2px);color:var(--th)}
+.hb-btn:hover::after{clip-path:circle(150% at var(--x,50%) var(--y,50%))}
+.hb-btn:hover svg{transform:translateX(4px)}
+.hb-btn:active{transform:scale(.97)}
+.hb-btn.navy{--b:#242E42;--f:#242E42;--th:#fff}
+.hb-btn.ondark{--b:#fff;--f:#fff;--t:#fff;--th:#242E42}
+.hb-btn.ondark-p{--b:#F5A623;--f:#F5A623;--t:#fff;--th:#242E42}
+.bhd-btn{position:relative;overflow:hidden;border-radius:999px;padding:14px 28px;font:700 15px/1 Figtree,sans-serif;letter-spacing:.005em;cursor:pointer;display:inline-flex;align-items:center;gap:10px;border:1.5px solid #FFB21A;background:#FFB21A;color:#14244A;box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 6px 16px -10px rgba(214,140,0,.6);transition:transform .5s cubic-bezier(.22,1,.36,1),box-shadow .5s}
+.bhd-btn::after{content:"";position:absolute;inset:0;background:#F2A100;clip-path:circle(0% at var(--x,50%) var(--y,50%));transition:clip-path .8s cubic-bezier(.22,1,.36,1)}
+.bhd-btn span,.bhd-btn svg{position:relative;z-index:1}
+.bhd-btn:hover{transform:translateY(-2px);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 12px 22px -10px rgba(214,140,0,.75)}
+.bhd-btn:hover::after{clip-path:circle(150% at var(--x,50%) var(--y,50%))}
+.bhd-btn:active{transform:scale(.98)}
+.bhd-btn.ol{background:rgba(255,251,244,.6);border-color:rgba(20,36,74,.18)}
+.bhd-btn.ol::after{background:#FDECCF}
+.bhd-btn.ol:hover{border-color:#FFB21A}
+.tre-btn{position:relative;overflow:hidden;border-radius:999px;border:2px solid transparent;padding:0 24px;min-height:48px;font:700 15px/1 "Plus Jakarta Sans",sans-serif;letter-spacing:.005em;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:transform .32s cubic-bezier(.2,.7,.2,1),background .32s}
+.tre-btn svg{transition:transform .32s cubic-bezier(.16,1,.3,1)}
+.tre-btn:hover{transform:translateY(-2px)}
+.tre-btn:hover svg{transform:translateX(4px)}
+.tre-btn:active{transform:scale(.98)}
+.tre-btn.p{background:#E08A2E;color:#0F1F3D;box-shadow:0 8px 18px -12px rgba(15,31,61,.6)}
+.tre-btn.p:hover{background:#C4741D}
+.tre-btn.p::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.4) 50%,transparent 70%);transform:translateX(-120%);transition:transform .6s}
+.tre-btn.p:hover::after{transform:translateX(120%)}
+.tre-btn.n{background:#1C3D7A;color:#fff}
+.tre-btn.n:hover{background:#132B56}
+.tre-btn.o{background:transparent;color:#1C3D7A;border-color:rgba(28,61,122,.35)}
+.tre-btn.gl{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
+.isa-btnrow{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.isa-band{border-radius:14px;padding:20px 22px;display:flex;gap:14px;flex-wrap:wrap}
+.tre-field{position:relative;border-radius:var(--r-xl);overflow:hidden;background:#0F1F3D center/cover}
+.tre-field canvas{position:absolute;inset:0;width:100%;height:100%}
+.tre-field::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,31,61,.82),rgba(15,31,61,.35) 60%,rgba(15,31,61,.15))}
+.tre-field .cap{position:absolute;left:28px;bottom:24px;color:#fff;z-index:2;font-size:16px;max-width:460px}
+.tre-field .cap b{display:block;font:italic 800 34px/1.1 "Plus Jakarta Sans",sans-serif;margin-bottom:6px}
+.tn-darkband{margin-top:10px;padding:12px 14px}.isa-btnrow{margin-top:6px}.isa-band{padding:12px 14px;border-radius:10px}
+.tn-b,.hb-btn,.bhd-btn,.tre-btn{transform-origin:center}.tre-field{border-radius:10px}.tre-field .cap{left:16px;bottom:12px;font-size:12px}.tre-field .cap b{font-size:22px}
+.tn-b svg,.hb-btn svg,.bhd-btn svg,.tre-btn svg{width:16px;height:16px;flex:none}
+.hb-btn,.bhd-btn,.tre-btn,.tn-b{white-space:nowrap}
