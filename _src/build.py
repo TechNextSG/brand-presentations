@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Build the brand books (presentation-style brand guides on the TechNext deck engine).
+"""Build the brand kits (presentation-style brand guides on the TechNext deck engine).
 
 Sources live in _src/decks/*.html and are written to the repo root with these tokens expanded:
   {{head}}              shared <head> tags (charset, viewport, noindex, favicons, deck fonts, deck.css)
@@ -24,7 +24,7 @@ SRC = pathlib.Path(__file__).parent
 ROOT = SRC.parent
 sys.path.insert(0, str(SRC))
 ICONS = json.loads((SRC / "icons.json").read_text(encoding="utf-8"))
-ASSET_V = "4"
+ASSET_V = "5"
 BASE = "https://technextsg.github.io/brand-presentations/"
 
 QR = {
@@ -148,9 +148,9 @@ def launcher():
                           f'    <header class="ix-gh"><h2 id="g-{gkey}">{gname}</h2><span class="ix-gn">{len(cards)}</span><p>{blurb}</p></header>\n'
                           f'    <div class="ix-grid">\n' + "\n".join(cards) + "\n    </div>\n  </section>")
     topics = "".join(f'<button type="button" class="ix-chip" data-t="{k}" aria-pressed="false">{v}</button>' for k, v in TOPICS)
-    bar = f"""  <div class="ix-bar" id="decks" role="search" aria-label="Find a brand book">
+    bar = f"""  <div class="ix-bar" id="decks" role="search" aria-label="Find a brand kit">
     <div class="ix-bar-1">
-      <label class="ix-q">{{{{icon:search}}}}<input type="search" placeholder="Search the brand books" aria-label="Search the brand books" autocomplete="off" spellcheck="false"><kbd aria-hidden="true">/</kbd></label>
+      <label class="ix-q">{{{{icon:search}}}}<input type="search" placeholder="Search the brand kits" aria-label="Search the brand kits" autocomplete="off" spellcheck="false"><kbd aria-hidden="true">/</kbd></label>
       <div class="ix-tabs" role="group" aria-label="Group"><button type="button" class="ix-tab" data-g="" aria-pressed="true">All<span>{n}</span></button>{''.join(tabs)}</div>
     </div>
     <div class="ix-bar-2">
@@ -161,10 +161,10 @@ def launcher():
       </div>
     </div>
   </div>
-  <p class="ix-count" role="status" aria-live="polite"><span data-count>All {n} brand books</span><button type="button" class="ix-clear" data-clear hidden>Clear filters</button></p>
+  <p class="ix-count" role="status" aria-live="polite"><span data-count>All {n} brand kits</span><button type="button" class="ix-clear" data-clear hidden>Clear filters</button></p>
   <div class="ix-results">
 """
-    empty = '  <div class="ix-empty" hidden><b>No brand book matches that.</b><p>Try another word, or <button type="button" data-clear>clear the filters</button>.</p></div>\n'
+    empty = '  <div class="ix-empty" hidden><b>No brand kit matches that.</b><p>Try another word, or <button type="button" data-clear>clear the filters</button>.</p></div>\n'
     flat = '  <div class="ix-grid ix-flat" hidden></div>\n'
     return bar + "\n".join(groups) + "\n" + flat + empty + "  </div>", n, slides_all, mins_all
 
@@ -187,7 +187,7 @@ def og(s, name, page):
     t = re.search(r"<title>(.*?)</title>", s).group(1)
     d = re.search(r'<meta name="description" content="(.*?)">', s).group(1)
     url = BASE + ("" if page == "index.html" else page)
-    return (f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Brand books">\n'
+    return (f'<meta property="og:type" content="website">\n<meta property="og:site_name" content="Brand kits">\n'
             f'<meta property="og:title" content="{t}">\n<meta property="og:description" content="{d}">\n'
             f'<meta property="og:url" content="{url}">\n<meta property="og:image" content="{BASE}assets/img/thumbs/{name}-og.jpg">\n'
             f'<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta name="twitter:card" content="summary_large_image">')

@@ -76,7 +76,7 @@
     }
     empty.hidden = shown.length > 0;
     var any = st.g || st.t.length || st.len || st.q || st.sort;
-    count.textContent = shown.length === total ? 'All ' + total + ' decks' : 'Showing ' + shown.length + ' of ' + total + ' decks';
+    count.textContent = shown.length === total ? 'All ' + total + ' brand kits' : 'Showing ' + shown.length + ' of ' + total + ' brand kits';
     clear.hidden = !any;
     press('.ix-tab', function (b) { return b.dataset.g === st.g; });
     press('[data-t]', function (b) { return st.t.indexOf(b.dataset.t) >= 0; });
@@ -230,13 +230,13 @@
   if (swOK) {
     navigator.serviceWorker.register('sw.js').catch(function () {});
     navigator.serviceWorker.addEventListener('message', function (e) {
-      if (e.data && e.data.warmed && st) { st.textContent = 'Saved: ' + Math.max(1, e.data.warmed - 1) + ' decks open on this device with no internet.'; if (off) off.disabled = false; }
+      if (e.data && e.data.warmed && st) { st.textContent = 'Saved: ' + Math.max(1, e.data.warmed - 1) + ' brand kits open on this device with no internet.'; if (off) off.disabled = false; }
     });
   }
   if (off && swOK) off.addEventListener('click', function () {
     var pages = [location.href.split('#')[0]];
     [].forEach.call(document.querySelectorAll('.ix-thumb'), function (a) { pages.push(new URL(a.getAttribute('href'), location.href).href); });
-    off.disabled = true; if (st) st.textContent = 'Saving ' + (pages.length - 1) + ' decks…';
+    off.disabled = true; if (st) st.textContent = 'Saving ' + (pages.length - 1) + ' brand kits…';
     navigator.serviceWorker.ready.then(function (reg) { if (reg.active) reg.active.postMessage({ warm: pages }); });
   });
 })();
