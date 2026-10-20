@@ -17,7 +17,7 @@ import kit_data as KD  # noqa: E402
 import kit_update  # noqa: E402,F401  (15 Oct live check: corrections + detail)
 
 ICONS = json.loads((SRC / "icons.json").read_text(encoding="utf-8"))
-V = "12"
+V = "13"
 ORDER = ["technext", "hummingbeing", "bhdasia", "tre-singapore"]
 QR = {"technext": "https://technext.asia/", "hummingbeing": "https://hummingbeing.com/", "bhdasia": "https://bhdasia.com/", "tre": "https://tre-in-singapore.com/"}
 SECTIONS = [("basics", "Basics"), ("web", "Web identity"), ("logo", "Logo"), ("colour", "Colour"), ("type", "Typography"), ("ui", "UI tokens"),
@@ -199,6 +199,7 @@ def page(slug):
     tone = "".join(f"<li>{e(t)}</li>" for t in B.get("tone", []))
     ctas = "".join(f'<div class="cta-g"><b>{e(g)}</b><p>' + "".join(f'<span>{e(x)}</span>' for x in xs) + "</p></div>" for g, xs in B.get("ctas", []))
     s8 = sec("wording", 10, "Voice and wording", f'<div class="traits">{traits}</div>'
+             + ('<div class="g3" style="margin:14px 0">' + "".join(f'<div class="card"><h3>{e(h)}</h3><p>{e(t)}</p></div>' for h, t in B.get("voice_pillars", [])) + "</div>" if B.get("voice_pillars") else "")
              + (f'<div class="g2 g2-w"><div class="card"><h3>In the brand\'s own words (verbatim, live)</h3><ol class="tone">{tone}</ol></div><div class="card"><h3>Button and link labels in use</h3>{ctas}</div></div>' if tone else "")
              + f'<div class="g3" style="margin-top:14px"><div class="card yes"><h3>Use</h3><ul class="ck">{"".join(f"<li>{x}</li>" for x in W["use"])}</ul></div>'
              f'<div class="card no"><h3>Avoid</h3><ul class="ck">{"".join(f"<li>{x}</li>" for x in W["avoid"])}</ul></div>{table(W["spelling"])}</div>')

@@ -75,6 +75,27 @@ T["anatomy"] = [("Email signature", "Table layout, Arial/Helvetica. Name 20/900 
 T["masters"]["open"] = ["Original logo folder not found after the 10 Oct Drive reorganisation.", "No exact colour spec for Nexi.", "Deck-only values (−1.5° kicker, 13 px eyebrow) differ from the site (−1.2°, 12 px)."]
 setrow(T["basics"], "Email", "sales@technext.asia (all site forms reply from it) · career@technext.asia for careers")
 
+# Adviser voice (owner, 20 Oct 2026): "we are solution provider/expert adviser" - website, presentations and branding.
+T["updated"] = T.get("updated", "") + " Voice updated 20 Oct 2026: solution provider and expert adviser."
+T["basics"][2:2] = [("Positioning", "Solution provider and expert adviser for Odoo ERP, enterprise AI, digital marketing and technology (IoT · Apps · Networks)"),
+                    ("Brand line", "“We advise first, then deliver the whole solution.” (company profile cover, home page)"),
+                    ("Process line", "“Listen. Advise. Implement. Stay.” (technext.asia/advisers)"),
+                    ("Advisers", "Six roles: Finance &amp; accounting · Sales, CRM &amp; service · Supply chain &amp; inventory · Manufacturing &amp; projects · AI &amp; automation · Website &amp; brand adviser (technext.asia/advisers)")]
+setrow(T["basics"], "Hero line", "“We advise first, then deliver the whole solution.” (the older “No need to hire your own team for Odoo, websites, branding or tech.” stays as a supporting line)")
+W = T["words"]
+W["title"] = 'Expert adviser, <span class="hl">plain and concrete.</span>'
+W["traits"] = ["Advises first", "Owns the whole solution", "Expertise you can name", "Plain", "Concrete", "Spoken to “you”", "One idea per slide or post"]
+W["use"] = ["solution provider and expert adviser", "we advise first, then deliver", "we recommend what fits, and say why", "the same advisers from start to finish",
+            "discovery call with an adviser", "solve (not fix)", "solutions (services only in menus and lists)", "standard Odoo first", "Odoo Ready Partner"]
+W["avoid"] = ["“trusted advisor”, “world-class”, “leading”, “one-stop shop”", "advisor (US spelling): always adviser", "vendor / agency / reseller",
+              "“we build” as the lead verb", "certified / gold / silver", "“free Odoo”", "jargon: leverage, synergy, best-in-class", "invented numbers", "ODOO in caps"]
+T["voice_pillars"] = [("Diagnose before we prescribe", "We ask how the business runs, then recommend: what fits, what can wait, and what not to buy."),
+                      ("Own the whole solution", "One accountable team from the advice to go-live and support. No hand-offs."),
+                      ("Expertise you can name", "Advisers by domain, a reason behind every recommendation, standard Odoo first.")]
+T["tone"] = ["We advise first, then deliver the whole solution.", "Solution provider and expert adviser, built around Odoo.", 
+             "Fourteen solutions. We advise where to start.", "Five steps, the same advisers from start to finish."] + T["tone"]
+T["ctas"][0] = (T["ctas"][0][0], T["ctas"][0][1] + ["Book a discovery call with an adviser (decks)"])
+
 # ======================================================================================== HummingBeing
 H = BRANDS["hummingbeing"]
 H["updated"] = "Checked against hummingbeing.com on 15 Oct 2026 (main 4d8bb1a)."
