@@ -31,7 +31,7 @@ for i, row in enumerate(T["scale"]):
         T["scale"][i] = ("Eyebrow", "font:700 12px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:#62627A", "Odoo Ready Partner", "site 12 / 700 / .12em caps")
 T["ui"]["buttons"] = ('<div class="isa-btnrow"><button type="button" class="tn-b p">Get a quotation {{icon:arrow}}</button><button type="button" class="tn-b g">Let\'s talk</button>'
                       '<button type="button" class="tn-b l">How we work</button></div>'
-                      '<div class="tn-darkband"><button type="button" class="tn-b w">Get your free website {{icon:arrow}}</button><button type="button" class="tn-b ow">Talk to us</button></div>')
+                      '<div class="tn-darkband"><button type="button" class="tn-b w">Book an adviser call {{icon:arrow}}</button><button type="button" class="tn-b ow">Talk to us</button></div>')
 T["ui"]["tokens"] += [("Sizes", ".btn-lg 52 · pad 0 24 · 16px; .btn-sm 38 · pad 0 14 · 14px · r 10"),
                       ("Button motion", "hover −2px + white sheen (.7s) · press scale(.96) .12s · ripple from click · busy spinner"),
                       ("Focus", "outline 2px solid #3167CA · offset 2px · r 4"),
@@ -47,7 +47,7 @@ T["ui"]["lead"] = "Hover and press: lift 2 px, a sheen sweeps, press 0.96. Label
 T["web"] = [("Page title", "Odoo Partner in Singapore &amp; the Philippines | TechNext"),
             ("Meta description", "TechNext is your Odoo, website and brand team in Singapore and the Philippines. You don't need to hire your own: we set it up and stay on after go-live."),
             ("H1 tag", "Odoo Ready Partner in Singapore &amp; the Philippines"),
-            ("Navigation", "Solution ▾ · Industries ▾ · Odoo ▾ · Company ▾ · Nexi Explains · <b>Free website</b> (primary button)"),
+            ("Navigation", "Solution ▾ · Industries ▾ · Odoo ▾ · Company ▾ · Nexi Explains · <b>Get a quotation</b> (primary button)"),
             ("Solution menu", "ERP: Odoo ERP Implementation · CRM Development · Enterprise Solution — AI Solution: RAG Knowledge Assistants · Odoo + AI integrations · Workflow Automation · AI Chatbots — Marketing: Web Design &amp; Development · Social Media Management · Graphic &amp; Brand Assets — Technology: IoT Solutions · App Development · Networks"),
             ("Industries", "Medical · Travel · Retail · Ecommerce · Construction · F&amp;B · Manufacturing · Health &amp; Wellness"),
             ("Company menu", "About TechNext · Employee Hub · Careers · Blog · Events · Life at TechNext · Singapore HQ · Philippines · Vietnam"),
@@ -62,9 +62,9 @@ T["tone"] = ["No need to hire your own team for Odoo, websites, branding or tech
              "Every Odoo app, one database.", "Tell us what slows you down.", "Configure. Migrate. Go live. Keep going.",
              "Where Odoo runs is a scoping decision, not a default.",
              "A short discovery call is enough to say which Odoo apps you need, in what order, and what it will take. No pitch before we understand the problem."]
-T["ctas"] = [("Most used", ["Get a quotation (~270)", "Let's talk (125)", "Get your free website (99)", "Talk to us (82)", "Start with discovery (51)", "Book a discovery call (~11)"]),
-             ("Also", ["Subscribe on YouTube", "How we work", "Browse all apps", "Watch Nexi Explains", "Ask Nexi", "See it run", "Free website"]),
-             ("Forms and /get-started", ["Send inquiry", "Need a written quotation?", "Claim my free design", "Message us now", "Set a schedule"])]
+T["ctas"] = [("Most used", ["Get a quotation (~270)", "Let's talk (125)", "Book an adviser call", "Talk to us (82)", "Start with discovery (51)", "Book a discovery call (~11)"]),
+             ("Also", ["Subscribe on YouTube", "How we work", "Browse all apps", "Watch Nexi Explains", "Ask Nexi", "See it run"]),
+             ("Forms and /bir-adviser-call", ["Send inquiry", "Need a written quotation?", "Book my free adviser call", "Message us now", "Set a schedule"])]
 T["a11y"] = [("Brand Blue #3167CA on white", "5.35", "AA"), ("White on Brand Blue", "5.35", "AA"), ("Body #4C4C63 on white", "8.33", "AAA"),
              ("Muted #62627A on white", "5.92", "AA"), ("Navy #1E4691 on Wash #EAF0FB", "7.84", "AAA"), ("Retired #8888A0 on white", "3.46", "fails (chevron stroke only)")]
 T["a11y_notes"] = "Skip link “Skip to content” (blue pill) · prefers-reduced-motion respected · focus ring 2 px Brand Blue."
