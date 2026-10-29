@@ -52,7 +52,7 @@ T["web"] = [("Page title", "Odoo Partner in Singapore &amp; the Philippines | Te
             ("Industries", "Medical · Travel · Retail · Ecommerce · Construction · F&amp;B · Manufacturing · Health &amp; Wellness"),
             ("Company menu", "About TechNext · Employee Hub · Careers · Blog · Events · Life at TechNext · Singapore HQ · Philippines · Vietnam"),
             ("Footer", "© 2026 TechNext Pte. Ltd. All rights reserved. · About · Careers · Blog · Privacy Policy · Terms of Service"),
-            ("Contacts", "sales@technext.asia (site-wide, never hello@) · career@technext.asia · WhatsApp +65 8839 6998 · meetings technext.odoo.com/book/c82cf8a9"),
+            ("Contacts", "sales@technext.asia (site-wide, never hello@) · career@technext.asia · WhatsApp +65 8839 6998 · meetings technext.odoo.com/appointment/discovery-call-with-technext-2?invite_token=914012541b1242c1ae832faa66a6efdc&filter_appointment_type_ids=%5B2%5D&"),
             ("Offices", "Singapore HQ, 261 Waterloo Street #03-36, Singapore 180261 · Main development and consulting hub, Taguig City · AI engineering hub, Ho Chi Minh City"),
             ("Social", "Facebook, Instagram, X, TikTok /technextasia · YouTube @technextasia · LinkedIn /company/technextasia"),
             ("Favicons", "favicon.ico (16/32/48) · favicon-32/48/96/192.png · apple-touch-icon 180×180"),
