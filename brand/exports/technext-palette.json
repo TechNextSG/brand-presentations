@@ -1,0 +1,106 @@
+{
+  "brand": "TechNext",
+  "edition": "Brand guidelines, Edition I, 2026",
+  "colours": [
+    {
+      "name": "Brand Blue",
+      "hex": "#3167CA",
+      "role": "Logo, primary buttons, links, the marked phrase"
+    },
+    {
+      "name": "Navy",
+      "hex": "#1E4691",
+      "role": "Hover, pressed, dark bands"
+    },
+    {
+      "name": "Deep navy",
+      "hex": "#0F2350",
+      "role": "Start of the dark gradient"
+    },
+    {
+      "name": "Ink",
+      "hex": "#1F1F3D",
+      "role": "Headings and strong text"
+    },
+    {
+      "name": "Wash",
+      "hex": "#EAF0FB",
+      "role": "Tinted grounds and tags"
+    },
+    {
+      "name": "White",
+      "hex": "#FFFFFF",
+      "role": "The page"
+    },
+    {
+      "name": "Sky",
+      "hex": "#6FA0F5",
+      "role": "Hover borders, arrows, glows"
+    },
+    {
+      "name": "Mist",
+      "hex": "#DDE7F8",
+      "role": "Borders on blue, focus halo"
+    },
+    {
+      "name": "Body",
+      "hex": "#4C4C63",
+      "role": "Paragraphs"
+    },
+    {
+      "name": "Muted",
+      "hex": "#62627A",
+      "role": "Captions and labels"
+    },
+    {
+      "name": "Line",
+      "hex": "#E7E4E9",
+      "role": "Hairlines"
+    },
+    {
+      "name": "Alt paper",
+      "hex": "#FAF9FB",
+      "role": "Alternate sections"
+    },
+    {
+      "name": "OK",
+      "hex": "#137A4A",
+      "role": "Success"
+    },
+    {
+      "name": "Amber",
+      "hex": "#A96B00",
+      "role": "Notes, Sample data chips"
+    },
+    {
+      "name": "Amber tint",
+      "hex": "#FDF6E9",
+      "role": "Note grounds"
+    },
+    {
+      "name": "Red",
+      "hex": "#D93A30",
+      "role": "Errors, deadline alerts"
+    },
+    {
+      "name": "Yellow",
+      "hex": "#FFD23F",
+      "role": "Highlight on blue grounds only"
+    },
+    {
+      "name": "Odoo plum",
+      "hex": "#714B67",
+      "role": "Odoo things only"
+    },
+    {
+      "name": "Logo plane start",
+      "hex": "#3871D2",
+      "role": "Brandmark gradient only"
+    },
+    {
+      "name": "Logo plane end",
+      "hex": "#64ADFF",
+      "role": "Brandmark gradient only"
+    }
+  ]
+}

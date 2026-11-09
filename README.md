@@ -1,20 +1,22 @@
-# Brand kits
+# TechNext brand guidelines
 
-Brand kit compilations in TechNext branding, unlisted (`noindex`): https://technextsg.github.io/brand-presentations/
+Unlisted (`noindex`, robots Disallow): https://technextsg.github.io/brand-presentations/brand/index.html
 
-| Page | Brand |
+Since 9 Nov 2026 this site shows the **TechNext** brand only, as one brand book in the XXVIII brand-book format
+(fixed chapter rail with Roman numerals, live colour contrast, type tester, downloads). The other kits moved to their own books:
+
+| Old page | Now |
 |---|---|
-| [technext.html](technext.html) | TechNext |
-| [hummingbeing.html](hummingbeing.html) | HummingBeing |
-| [bhdasia.html](bhdasia.html) | BHD Asia |
-| [tre-singapore.html](tre-singapore.html) | TRE™ in Singapore |
+| `index.html`, `technext.html` | redirect to `brand/index.html` |
+| `hummingbeing.html` | https://technextmarketing.github.io/hummingbeing/brand/index.html |
+| `bhdasia.html` | https://technextmarketing.github.io/bhdasia/brand/index.html |
+| `tre-singapore.html` | https://technextmarketing.github.io/tre-in-singapore/brand/index.html |
 
-Each page has the same ten sections: basics, logo (viewer, files with downloads, rules), colour (tokens with live contrast), typography,
-UI tokens, imagery, formats, wording, do's and don'ts, masters and sources.
+## The book
 
-## Build
+`brand/index.html` + `brand.css` + `brand.js`, hand-written (no build step). Assets: `brand/img` (display WebP/PNG),
+`brand/logo` (master SVG/PNG + favicons), `brand/fonts` (woff2), `brand/exports` (tokens CSS, palette JSON, call background).
+Bump `?v=` on brand.css / brand.js when they change.
 
-Edit `_src/kit_data.py` (all content) or `assets/kit.css|js`, then `python -B _src/build.py`. The root `*.html` files are generated
-by `_src/site_build.py`. Bump `V` in `_src/site_build.py` when anything under `assets/` changes. Print / PDF from the browser (print styles included).
-Materials: `python tools/materials.py <inventory.json>` copies files into downloads/ (ZIP per brand) and writes `_src/materials.json`. Live-check corrections live in `_src/kit_update.py`. QA: `python tools/bb_overlap.py` (must report 0 issues) and `python tools/bb_shots.py`.
-Research notes: `~/ClaudeWork/brand-presentations-research/`.
+Facts come from technext.asia (site.css tokens, live copy) and the owner's brand rules. Retired: `_src/build.py` / `site_build.py`
+(the old four-kit generator) - do not re-run it, it would bring the old list back.
